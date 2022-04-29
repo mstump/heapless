@@ -15,6 +15,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Changed
 
+- [breaking-change] `IndexMap` and `IndexSet` now require that keys implement the `core::hash::Hash`
+  trait instead of the `hash32::Hash` (v0.2.0) trait
+
 ## [v0.7.10] - 2022-01-21
 
 ### Fixed
