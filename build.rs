@@ -23,11 +23,13 @@ fn main() -> Result<(), Box<dyn Error>> {
         println!("cargo:rustc-cfg=armv7a");
     }
 
+    println!("cargo:warning=TARGET {:?}", target);
+
     // built-in targets with no atomic / CAS support as of nightly-2022-01-13
     // AND not supported by the atomic-polyfill crate
     // see the `no-atomics.sh` / `no-cas.sh` script sitting next to this file
     match &target[..] {
-        "avr-unknown-gnu-atmega328"
+        "avr-atmega32u4"
         | "bpfeb-unknown-none"
         | "bpfel-unknown-none"
         | "msp430-none-elf"
@@ -43,7 +45,7 @@ fn main() -> Result<(), Box<dyn Error>> {
     };
 
     match &target[..] {
-        "avr-unknown-gnu-atmega328"
+        "avr-atmega32u4"
         | "msp430-none-elf"
         // | "riscv32i-unknown-none-elf"    // supported by atomic-polyfill
         // | "riscv32imc-unknown-none-elf"  // supported by atomic-polyfill
